@@ -1,33 +1,44 @@
-function myFirstApp(name, age) {
-	alert("Привет, меня зовут " + name + " и это моя первая программа!");
-	function showSkills() {
-		let skills = ["html", "css", "sharepoint2013", "MSword", "MSexcel"];
-		
-		for (let i = 0; i < skills.length; i++) {
-			skills [i] = document.write("Я владею " + skills[i] + "<br>");
+let chooseBtn = document.getElementById('choose'),
+	receiveBtn = document.getElementById('receive'),
+	heading = document.getElementsByTagName('h2') [0],
+	nameInput = document.getElementsByClassName('contactform_name') [0],
+	phoneInput = document.querySelector('.contactform_phone'),
+	mailInput = document.querySelectorAll('.contactform_mail') [0],
+	modal = document.querySelector('.modal'),
+	close = document.querySelector(".close"),
+	text = document.getElementsByName('message') [0];
+	
+	function hover() {
+		heading.textContent = "Действительно все!"
 	}
-}	
-
-	showSkills();
-
-	function checkAge() {
-		let age = prompt("Сколько вам лет?")
-		if (age > 18) {
-		alert("Добро пожаловать!")
-		}
-		else {
-		alert("Доступ запрещен!")
-		}
+	function out() {
+		heading.textContent = "Все включено!"
 	}
 
-	checkAge();
+heading.addEventListener("click", hover);
+heading.addEventListener("dblclick", function(){
+	heading.textContent = "Все включено!"
+});
 
-	function calcPow() {
-		let number = prompt("Введи число и узнай его квадрат!");
-		let numberCheck = number * number;
-		alert(numberCheck);
+receiveBtn.addEventListener('click', function() {
+	modal.style.display = 'block'
+});
+close.addEventListener('click', function(){
+	modal.style.display = 'none'
+});
+
+nameInput.addEventListener("input", function() {
+	text.value = "Меня зовут " + nameInput.value + ". И я хочу спросить:";
+	if (nameInput.value == '') {
+		text.value = ""
 	}
-	calcPow();
-}
 
-myFirstApp("Mariya", 29)
+	});
+
+// chooseBtn.addEventListener("click," function() {
+// 	modal.style.display = 'block'
+// });
+
+// close.addEventListener('click', function(){
+// 	modal.style.display = 'none'
+// });
